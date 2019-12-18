@@ -16,13 +16,14 @@ document.addEventListener('click', () => {
   if (clickedBtn === '0' && currentNum.length > 0) currentNum += clickedBtn;
 
   /* Only one comma in number */
-  if (clickedBtn === ',' && isComma === false) {
+  if (clickedBtn === ',' && isComma === false && parseFloat(currentNum)) {
     currentNum += clickedBtn;
     isComma = true;
   }
 
   /* View on screen */
-  if (currentNum > 0) screen.innerHTML = currentNum;
+  if (parseFloat(currentNum) || clickedBtn === ',')
+    screen.innerHTML = currentNum;
 
   /* Choose arithmetic operator and move number to next one */
   if (
@@ -32,6 +33,7 @@ document.addEventListener('click', () => {
     clickedBtn === '*'
   ) {
     arithmeticOperator = clickedBtn;
+
     if (isChooseOperator === false) {
       hideNum = currentNum;
       currentNum = '';
@@ -40,7 +42,6 @@ document.addEventListener('click', () => {
     }
   }
 
-  console.log(arithmeticOperator);
   /* Delete last number */
   if (clickedBtn === 'CE') currentNum = '';
 
@@ -65,7 +66,7 @@ document.addEventListener('click', () => {
   };
 
   /* View sum on screen */
-  if (clickedBtn === '=') {
+  if (clickedBtn === '=' && parseFloat(hideNum)) {
     currentNum = currentNum.replace(',', '.');
     hideNum = hideNum.replace(',', '.');
     let sum = operacje(arithmeticOperator);
@@ -73,6 +74,7 @@ document.addEventListener('click', () => {
     sum = sum.replace('.', ',');
     screen.innerHTML = sum;
     currentNum = sum;
+    isComma = false;
     isChooseOperator = false;
   }
 });
