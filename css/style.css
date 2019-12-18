@@ -1,0 +1,52 @@
+#myVideo {
+  position: fixed;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+.myScreen {
+  display: block;
+  width: 100%;
+  min-height: 43px;
+  color: #aaa8a8;
+  font-size: 35px;
+  border-bottom: solid 1px white;
+  text-align: center;
+}
+
+.calc {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 8px;
+  padding: 10px;
+}
+
+.wrapper>div {
+  color: #dbd6d6;
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+  border-radius: 10%;
+  border: solid 3px rgb(101, 102, 102);
+}
+
+.wrapper>div:hover {
+  background-color: #dbd6d6;
+  color: #000;
+  cursor: pointer;
+}
+
+.btnC {
+  grid-column: 1/3;
+}
+
+.btnCE {
+  grid-column: 3/5;
+}
