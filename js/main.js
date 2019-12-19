@@ -5,6 +5,7 @@ let isComma = false;
 let isChooseOperator = false;
 
 document.addEventListener('click', () => {
+  /* Get clicked button and screen to view numbers */
   let clickedBtn = event.target.textContent;
   const screen = document.querySelector('.myScreen');
 
@@ -51,18 +52,21 @@ document.addEventListener('click', () => {
     hideNum = '';
     arithmeticOperator = '';
     isComma = false;
-    screen.innerHTML = 'W tym roku dostanę prezentów...';
+    screen.innerHTML = 'Ilość prezentów...';
   }
 
-  /* Functions return result of action */
-  const operacje = zmienna => {
-    if (zmienna === '+') return parseFloat(hideNum) + parseFloat(currentNum);
-    else if (zmienna === '-')
+  /* Functions return result of mathematic actions */
+  const operacje = arithmeticOperator => {
+    if (arithmeticOperator === '+')
+      return parseFloat(hideNum) + parseFloat(currentNum);
+    else if (arithmeticOperator === '-')
       return parseFloat(hideNum) - parseFloat(currentNum);
-    else if (zmienna === '*')
+    else if (arithmeticOperator === '*')
       return parseFloat(hideNum) * parseFloat(currentNum);
-    else if (zmienna === '/')
-      return parseFloat(hideNum) / parseFloat(currentNum);
+    else if (arithmeticOperator === '/') {
+      if (!currentNum.length) return 'Nie można dzielić przez zero';
+      else return parseFloat(hideNum) / parseFloat(currentNum);
+    }
   };
 
   /* View sum on screen */
@@ -73,7 +77,7 @@ document.addEventListener('click', () => {
     sum = sum.toString();
     sum = sum.replace('.', ',');
     screen.innerHTML = sum;
-    currentNum = sum;
+    (sum != 'Nie można dzielić przez zero') ? currentNum = sum : sum = '';
     isComma = false;
     isChooseOperator = false;
   }
