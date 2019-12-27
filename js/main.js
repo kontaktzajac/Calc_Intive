@@ -9,29 +9,33 @@ document.addEventListener('click', () => {
   let clickedBtn = event.target.textContent;
   const screen = document.querySelector('.myScreen');
 
+  /* Negative numbers */
+  if (clickedBtn === '-' && currentNum.length === 0) currentNum += clickedBtn;
+
   /* Add numbers to currentNum */
-  if (Number(clickedBtn) && event.target.classList != 'myScreen')
+  if (Number(clickedBtn) && event.target.classList != 'myScreen' && currentNum != '0')
     currentNum += clickedBtn;
 
   /* Add zero to number */
-  if (clickedBtn === '0' && currentNum.length > 0) currentNum += clickedBtn;
+  if (clickedBtn === '0' && currentNum != '0') currentNum += clickedBtn;
 
   /* Only one comma in number */
-  if (clickedBtn === ',' && isComma === false && parseFloat(currentNum)) {
+  if (clickedBtn === ',' && isComma === false && parseFloat(currentNum) && currentNum.length > 0) {
     currentNum += clickedBtn;
     isComma = true;
   }
 
   /* View on screen */
-  if (parseFloat(currentNum) || clickedBtn === ',')
+  if (parseFloat(currentNum) || currentNum === '0' || currentNum === '-')
     screen.innerHTML = currentNum;
 
   /* Choose arithmetic operator and move number to next one */
   if (
-    clickedBtn === '+' ||
-    clickedBtn === '-' ||
-    clickedBtn === '/' ||
-    clickedBtn === '*'
+    Number(currentNum) &&
+    (clickedBtn === '+' ||
+      clickedBtn === '-' ||
+      clickedBtn === '/' ||
+      clickedBtn === '*')
   ) {
     arithmeticOperator = clickedBtn;
 
@@ -64,20 +68,26 @@ document.addEventListener('click', () => {
     else if (arithmeticOperator === '*')
       return parseFloat(hideNum) * parseFloat(currentNum);
     else if (arithmeticOperator === '/') {
-      if (!currentNum.length) return 'Nie można dzielić przez zero';
+      if (currentNum === '0') return 'Nie można dzielić przez zero';
       else return parseFloat(hideNum) / parseFloat(currentNum);
     }
   };
 
   /* View sum on screen */
-  if (clickedBtn === '=' && parseFloat(hideNum)) {
+  if (clickedBtn === '=' && parseFloat(hideNum) && (parseFloat(currentNum) || currentNum === '0')) {
     currentNum = currentNum.replace(',', '.');
     hideNum = hideNum.replace(',', '.');
     let sum = operacje(arithmeticOperator);
     sum = sum.toString();
     sum = sum.replace('.', ',');
     screen.innerHTML = sum;
-    (sum != 'Nie można dzielić przez zero') ? currentNum = sum : sum = '';
+    currentNum = sum;
+    if (sum == 'Nie można dzielić przez zero') {
+      currentNum = '';
+      hideNum = '';
+      arithmeticOperator = '';
+      isComma = false;
+    }
     isComma = false;
     isChooseOperator = false;
   }
