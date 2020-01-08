@@ -32,26 +32,22 @@ body {
   padding: 10px;
 }
 
-.wrapper > div {
+.wrapper>div {
   color: #dbd6d6;
   text-align: center;
   padding: 20px;
   font-size: 30px;
   border-radius: 10%;
-  border: solid 3px rgb(101, 102, 102);
+  border: solid 3px #656666;
   background-color: #000;
 }
 
-.wrapper > div:hover {
+.wrapper>div:hover {
   background-color: #dbd6d6;
   color: #000;
   cursor: pointer;
 }
 
-.btnC {
-  grid-column: 1/3;
-}
-
-.btnCE {
-  grid-column: 3/5;
+.wrapper>div.nums {
+  border-color: #b4b4b4;
 }

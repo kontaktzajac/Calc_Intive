@@ -13,7 +13,7 @@ document.addEventListener('click', () => {
   if (clickedBtn === '-' && currentNum.length === 0) currentNum += clickedBtn;
 
   /* Add numbers to currentNum */
-  if (Number(clickedBtn) && event.target.classList != 'myScreen' && currentNum != '0')
+  if (Number(clickedBtn) && event.target.classList != 'myScreen' && currentNum != '0' && clickedBtn != 'x2')
     currentNum += clickedBtn;
 
   /* Add zero to number */
@@ -35,7 +35,9 @@ document.addEventListener('click', () => {
     (clickedBtn === '+' ||
       clickedBtn === '-' ||
       clickedBtn === '/' ||
-      clickedBtn === '*')
+      clickedBtn === '*' ||
+      clickedBtn === 'x2') ||
+    clickedBtn.charCodeAt() === 8730
   ) {
     arithmeticOperator = clickedBtn;
 
@@ -60,7 +62,7 @@ document.addEventListener('click', () => {
   }
 
   /* Functions return result of mathematic actions */
-  const operacje = arithmeticOperator => {
+  const mathematicalOperations = arithmeticOperator => {
     if (arithmeticOperator === '+')
       return parseFloat(hideNum) + parseFloat(currentNum);
     else if (arithmeticOperator === '-')
@@ -70,14 +72,20 @@ document.addEventListener('click', () => {
     else if (arithmeticOperator === '/') {
       if (currentNum === '0') return 'Nie można dzielić przez zero';
       else return parseFloat(hideNum) / parseFloat(currentNum);
+    } else if (arithmeticOperator === 'x2')
+      return Math.pow(parseFloat(hideNum), parseFloat(currentNum));
+    else if (arithmeticOperator.charCodeAt() === 8730) {
+      if (currentNum === '0') return 'Nie można dzielić przez zero';
+      else return Math.pow(parseFloat(hideNum), 1 / parseFloat(currentNum));
     }
+
   };
 
   /* View sum on screen */
   if (clickedBtn === '=' && parseFloat(hideNum) && (parseFloat(currentNum) || currentNum === '0')) {
     currentNum = currentNum.replace(',', '.');
     hideNum = hideNum.replace(',', '.');
-    let sum = operacje(arithmeticOperator);
+    let sum = mathematicalOperations(arithmeticOperator);
     sum = sum.toString();
     sum = sum.replace('.', ',');
     screen.innerHTML = sum;
