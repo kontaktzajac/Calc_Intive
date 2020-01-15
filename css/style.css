@@ -9,6 +9,16 @@ body {
   z-index: -1;
 }
 
+.smallScreen {
+  display: block;
+  float: right;
+  width: 50%;
+  min-height: 23px;
+  color: #aaa8a8;
+  font-size: 15px;
+  text-align: right;
+}
+
 .myScreen {
   display: block;
   width: 100%;
@@ -50,4 +60,12 @@ body {
 
 .wrapper>div.nums {
   border-color: #b4b4b4;
+}
+
+.btnC {
+  grid-column: 1/3;
+}
+
+.btnCE {
+  grid-column: 3/5;
 }
