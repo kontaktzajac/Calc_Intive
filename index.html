@@ -1,87 +1,122 @@
 <!DOCTYPE html>
 <html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Policz swoje prezenty</title>
+    <!-- Favicon -->
+    <link rel="icon" href="img/prezent-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.11.2/css/all.css"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- Material Design Bootstrap -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta http-equiv="x-ua-compatible" content="ie=edge" />
-  <title>Policz swoje prezenty</title>
-  <!-- MDB icon -->
-  <link rel="icon" href="img/prezent-favicon.ico" type="image/x-icon" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet" />
-  <!-- Bootstrap core CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css" />
-  <!-- Material Design Bootstrap -->
-  <link rel="stylesheet" href="css/mdb.min.css" />
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css" />
-</head>
+  <body>
+    <!-- Background video -->
+    <video autoplay muted loop id="myVideo">
+      <source src="video/Snow.mp4" type="video/mp4" />
+    </video>
 
-<body>
-  <!-- Background video -->
-  <video autoplay muted loop id="myVideo">
-    <source src="video/Snow.mp4" type="video/mp4" />
-  </video>
+    <div class="container text-center pt-5" style="height: 100px;">
+      <h1 class="animated fadeIn mb-4 text-white">
+        Ile prezentów dostaniesz w tym roku?
+      </h1>
 
-  <div class="container text-center pt-5" style="height: 100px;">
-    <h1 class="animated fadeIn mb-4 text-white">
-      Ile prezentów dostaniesz w tym roku?
-    </h1>
-
-    <section class="calc">
-      <div class="md-form form-lg pt-5">
-        <div class="smallScreen"></div>
-        <div style="clear: both;"></div>
-        <div class="myScreen">Ilość prezentów...</div>
+      <div class="chooseCurrency">
+        <div class="leftTableCurrency">
+          <div class="buttonCurrency">
+            <h2>Tabela A</h2>
+          </div>
+          <div class="listCurrency">
+            <div class="listElementCurrency">
+              <div class="codeCurrency">Code</div>
+              <div class="nameCurrency">Currency</div>
+              <div class="buttonChoose">Wybierz</div>
+            </div>
+          </div>
+        </div>
+        <div class="rightTableCurrency">
+          <div class="buttonCurrency">
+            <h2>Tabela B</h2>
+          </div>
+          <div class="listCurrency listCurrencyB">
+            <div class="listElementCurrency">
+              <div class="codeCurrency">Code</div>
+              <div class="nameCurrency">Currency</div>
+              <div class="buttonChoose">Wybierz</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="wrapper mt-5">
-        <div class="btnC">C</div>
-        <div class="btnCE">CE</div>
+      <section class="calc">
+        <div class="md-form form-lg pt-5">
+          <div class="smallScreen"></div>
+          <div style="clear: both;"></div>
+          <div class="myScreen">Ilość prezentów...</div>
+        </div>
 
-        <div class="btnBracket">(</div>
-        <div class="btnBracket">)</div>
-        <div class="btnRadic">&#8730;</div>
-        <div class="btnCircumflex">x<sup>2</sup></div>
+        <div class="wrapper mt-5">
+          <div class="btnC">C</div>
+          <div class="btnCE">CE</div>
+          <div class="btnWaluta">Waluta</div>
 
-        <div class="num7 nums">7</div>
-        <div class="num8 nums">8</div>
-        <div class="num9 nums">9</div>
-        <div class="divided">/</div>
+          <div class="btnBracket">(</div>
+          <div class="btnBracket">)</div>
+          <div class="btnRadic">&#8730;</div>
+          <div class="btnCircumflex">x<sup>2</sup></div>
 
-        <div class="num4 nums">4</div>
-        <div class="num5 nums">5</div>
-        <div class="num6 nums">6</div>
-        <div class="multi">*</div>
+          <div class="num7 nums">7</div>
+          <div class="num8 nums">8</div>
+          <div class="num9 nums">9</div>
+          <div class="divided">/</div>
 
-        <div class="num1 nums">1</div>
-        <div class="num2 nums">2</div>
-        <div class="num3 nums">3</div>
-        <div class="minus">-</div>
+          <div class="num4 nums">4</div>
+          <div class="num5 nums">5</div>
+          <div class="num6 nums">6</div>
+          <div class="multi">*</div>
 
-        <div class="comma">,</div>
-        <div class="num0 nums">0</div>
-        <div class="equals">=</div>
-        <div class="plus">+</div>
-      </div>
-    </section>
-  </div>
+          <div class="num1 nums">1</div>
+          <div class="num2 nums">2</div>
+          <div class="num3 nums">3</div>
+          <div class="minus">-</div>
 
-  <!-- jQuery -->
-  <script type="text/javascript" src="js/jquery.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
-  <!-- Your custom scripts (optional) -->
-  <script type="text/javascript"></script>
+          <div class="comma">,</div>
+          <div class="num0 nums">0</div>
+          <div class="equals">=</div>
+          <div class="plus">+</div>
+        </div>
+      </section>
+    </div>
 
-  <script src="js/main.js"></script>
-</body>
+    <!-- jQuery -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Your custom scripts (optional) -->
+    <script type="text/javascript"></script>
 
+    <script src="js/main.js"></script>
+  </body>
 </html>
